@@ -2,50 +2,67 @@
 
 alert("Guess the famous person! This is a game where you receive clues and try and guess who they are about");
 
-var userAnswer = prompt("Hint 1, The person is either an actor or an athlete. Guess their occupation for more clues or if you're feeling lucky guess the person themself!").toUpperCase();
+var win = false;
+var userAnswer = 0;
 
-	if (userAnswer === "ACTOR") {
-		alert("WOW! First try!? What are the odds? Like 50%? You should buy a lotto ticket!");
-	} else if (userAnswer === "GARY BUSEY") {
-		alert("OK...either you have played this before or you just have a profound love for my man GARY");
-	} else if (userAnswer != "ACTOR") {
-		guess2 = prompt("Nope, try again!....hint there is only one option left and it rhymes with tractor....").toUpperCase();
-			if (guess2 === "ACTOR") {
-				alert("Hurrray! You move on!");
-			} else { 
-				alert("OK fine I'll just tell you, they are an actor");
-			}
-	}
+var play = function(){
+	
+  var userAnswer = prompt("Hint 1, The person is either an actor or an athlete. Guess their occupation for more clues or if you're feeling lucky guess the person themselves!").toUpperCase();
+
+  if (userAnswer === "ACTOR") {
+    alert("WOW! First try!? What are the odds? Like 50%? You should buy a lotto ticket!");
+  } else if (userAnswer === "GARY BUSEY") {
+  	alert("OK...either you have played this before or you just have a profound love for my man GARY");
+  	win = true;
+    return;
+  } else if (userAnswer != "ACTOR") {
+  	guess2 = prompt("Nope, try again!....hint there is only one option left and it rhymes with tractor....").toUpperCase();
+  if (guess2 === "ACTOR") {
+  	alert("Hurrray! You move on!");
+  } else { 
+  	alert("OK fine I'll just tell you, they are an actor");
+  }
+  }
+
+  var Answer2 = prompt("Are they male or female?").toUpperCase();
+  if (Answer2 === "MALE") {
+  	alert("Correct, they are indeed male!");
+  } else if (Answer2 === "GARY BUSEY") {
+  	alert("Wow you win! So much gary!");
+    win = true;
+    return;
+  } else  if (Answer2 != "MALE" || "GARY BUSEY") {
+  	prompt("Nope, Guess again!");
+  }
+
+  alert("Good JOB! Now for a game of chance! Guess the correct number for a SUPER BIG HINT");
 
 
-var Answer2 = prompt("Are they male or female?").toUpperCase();
-	if (Answer2 === "MALE") {
-		alert("Correct, they are indeed male!");
-		} else if (Answer2 === "GARY BUSEY") {
-			alert("Wow you win! So much gary!");
-		} else  if (Answer2 != "MALE" || "GARY BUSEY") {
-			prompt("Nope, Guess again!");
-		}
+  // 1/4 chance bonus hint 
+  var bonusChance = prompt("Choose a number between 1 and 4, if you get it right the game will be much easier!");
+  var computerBonus = Math.floor(Math.random() * 4);
 
-alert("Good JOB! Now for a game of chance! Guess the correct number for a SUPER BIG HINT");
+  if (bonusChance == computerBonus) {
+    alert("It's your lucky day! You get the bonus hint! This male actor has been classic films such as Point Break and Lethal Weapon however his most recent role was in an Amazon fire TV commercial and involved a seashell");
+  } else{
+    alert("Sorry, you guessed incorrectly, no bonus hint for you.");
+  }
+    	
+  alert("This is your last shot! Guess the answer correctly or start over!");
 
+  var finalAnswer = prompt("This actor is known for his eccentric ways and horse like smile").toUpperCase();
+  if (finalAnswer === "GARY BUSEY") {
+    win = true;
+    return;
+    alert("CONGRADULATIONS YOU WIN!!!!!!!!!!!!!!!!!!!!");
+  } else{
+    alert("INCORRECT!!!! Please hit refresh for another chance!");
+  }
+    	
+};
 
-// 1/4 chance bonus hint 
-var bonusChance = prompt("Choose a number between 1 and 4, if you get it right the game will be much easier!");
-var computerBonus = Math.floor(Math.random() * 4);
-
-if (bonusChance === computerBonus) {
-	alert("It's your lucky day! You get the bonus hint! This male actor has been classic films such as Point Break and Leathal Weapon however his most recent role was in an Amazon fire TV commercial and involved a seashell");
-} else{
-	alert("Sorry, you guessed incorrectly, no bonus hint for you.");
+while(win === false){
+	play();
 }
-	alert("This is your last shot! Guess the answer correctly or start over!");
-
-	var finalAnswer = prompt("This actor is known for his eccentric ways and horse like smile");
-		if (finalAnswer === "GARY BUSEY") {
-			alert("CONGRADULATIONS YOU WIN!!!!!!!!!!!!!!!!!!!!");
-		} else{
-			alert("INCORRECT!!!! Please hit refresh for another chance!");
-		}
-
+	alert("CONGRADGULATIONS YOU WON");
 </script>
